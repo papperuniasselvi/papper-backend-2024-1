@@ -10,6 +10,8 @@ jobs:
   test:
     name: "Testes Unitários"
     runs-on: ubuntu-latest
+    env:
+      APP_KEY: base64:IWljo6O5J1iYUToQox1ZaAXLjikeQTDCl+RwxEJx/8k=
     steps:
       - name: "Checkout do projeto"
         uses: actions/checkout@v2
