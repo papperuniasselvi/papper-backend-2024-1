@@ -1,17 +1,4 @@
-# Arquivos de configuração
+.git
+.gitignore
 .env
-.env.example
-
-# Arquivos do Composer
-/vendor/
-
-# Arquivos de log
-/storage/logs/
-
-# Arquivos de cache
-/bootstrap/cache/
-
-# Arquivos de backup
-/.idea/
-/.vscode/
-/.git/
+vendor/

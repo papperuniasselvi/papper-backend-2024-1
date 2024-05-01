@@ -11,6 +11,9 @@ RUN echo "opcache.jit_buffer_size=128M" >> /usr/local/etc/php/conf.d/docker-php-
 ADD . /app
 WORKDIR /app
 
+RUN chown -R www-data:www-data /app
+RUN usermod -u 1000 www-data
+
 RUN mkdir -p /app/bootstrap/cache  /app/storage/framework/sessions /app/storage/framework/views /app/storage/framework/cache
 
 RUN apt-get update -yqq > /dev/null && \
