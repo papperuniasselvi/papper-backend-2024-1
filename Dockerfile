@@ -30,4 +30,4 @@ RUN php artisan optimize
 
 EXPOSE 8080
 
-CMD php artisan octane:start --server=swoole --host=0.0.0.0 --port=8080
+CMD php artisan key:generate && php artisan octane:start --server=swoole --host=0.0.0.0 --port=8080
