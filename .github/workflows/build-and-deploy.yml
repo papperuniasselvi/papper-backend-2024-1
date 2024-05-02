@@ -43,7 +43,8 @@ jobs:
 
       - name: Deploy to server
         run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ssh_key.pem  # Salva a chave SSH em um arquivo temporário
-          chmod 600 ssh_key.pem  # Define as permissões corretas no arquivo temporário
-          ssh -i ssh_key.pem ${{ secrets.SSH_SERVER }} "docker pull lamarques/papper-api:latest && docker stop papper-api-container && docker rm papper-api-container && docker run -d -p 8001:8080 --env-file=/home/papper/secrets/paper.env.prod --name papper-api-container lamarques/papper-api:latest"
+          touch ~/.ssh/id_rsa.pub
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" >  ~/.ssh/id_rsa.pub
+          chmod 600 ~/.ssh/id_rsa.pub
+          ssh ${{ secrets.SSH_SERVER }} "docker pull lamarques/papper-api:latest && docker stop papper-api-container && docker rm papper-api-container && docker run -d -p 8001:8080 --env-file=/home/papper/secrets/paper.env.prod --name papper-api-container lamarques/papper-api:latest"
 
