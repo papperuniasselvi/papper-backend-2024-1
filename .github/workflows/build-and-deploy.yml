@@ -43,8 +43,7 @@ jobs:
 
       - name: Deploy to server
         run: |
-          touch ~/.ssh/id_rsa.pub
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" >  ~/.ssh/id_rsa.pub
-          chmod 600 ~/.ssh/id_rsa.pub
-          ssh ${{ secrets.SSH_SERVER }} "docker pull lamarques/papper-api:latest && docker stop papper-api-container && docker rm papper-api-container && docker run -d -p 8001:8080 --env-file=/home/papper/secrets/paper.env.prod --name papper-api-container lamarques/papper-api:latest"
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" >  id_rsa.pub
+          chmod 600 id_rsa.pub
+          ssh -i id_rsa.pub ${{ secrets.SSH_SERVER }} "docker pull lamarques/papper-api:latest && docker stop papper-api-container && docker rm papper-api-container && docker run -d -p 8001:8080 --env-file=/home/papper/secrets/paper.env.prod --name papper-api-container lamarques/papper-api:latest"
 
