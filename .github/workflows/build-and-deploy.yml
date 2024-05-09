@@ -50,5 +50,5 @@ jobs:
           echo "${{ secrets.SSH_PRIVATE_KEY }}" >>  ~/.ssh/authorized_keys
           chmod 600 ~/.ssh/authorized_keys
       - name: Deploy to server
-        run: sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_SERVER }} "docker pull lamarques/papper-api:latest && docker stop papper-api-container && docker rm papper-api-container && docker run -d -p 8001:8080 --env-file=/home/papper/secrets/paper.env.prod --name papper-api-container lamarques/papper-api:latest"
+        run: sshpass -p "${{ secrets.SSH_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SSH_SERVER }} "docker stop papper-api-container && docker container prune -f && docker image prune -f && docker pull lamarques/papper-api:latest && docker rm papper-api-container && docker run -d -p 8001:8080 --env-file=/home/papper/secrets/paper.env.prod --name papper-api-container lamarques/papper-api:latest"
 
