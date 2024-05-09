@@ -11,21 +11,18 @@ RUN echo "opcache.jit_buffer_size=128M" >> /usr/local/etc/php/conf.d/docker-php-
 ADD . /app
 WORKDIR /app
 
-RUN chown -R www-data:www-data /app
-RUN usermod -u 1000 www-data
-
-RUN mkdir -p /app/bootstrap/cache  /app/storage/framework/sessions /app/storage/framework/views /app/storage/framework/cache
+#RUN mkdir -p /app/bootstrap/cache  /app/storage/framework/sessions /app/storage/framework/views /app/storage/framework/cache
 
 RUN apt-get update -yqq > /dev/null && \
-    apt-get install -yqq git unzip > /dev/null&& \
+    apt-get install -yqq git unzip > /dev/null && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php && php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 
-USER www-data
-RUN composer install -a --no-dev --no-scripts --quiet
+RUN  composer install -a --no-dev --prefer-dist --no-autoloader --no-scripts
+
 RUN composer dump-autoload
 RUN php artisan optimize
 
