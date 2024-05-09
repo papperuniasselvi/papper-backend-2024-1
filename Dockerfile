@@ -26,6 +26,8 @@ RUN  composer install -a --no-dev --prefer-dist --no-autoloader --no-scripts
 RUN composer dump-autoload
 RUN php artisan optimize
 
+RUN touch .env
+
 EXPOSE 8080
 
 CMD sleep 10 && php artisan key:generate && php artisan octane:start --server=swoole --host=0.0.0.0 --port=8080
