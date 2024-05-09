@@ -23,6 +23,9 @@ RUN  composer install -a --no-dev --prefer-dist --no-autoloader --no-scripts
 
 RUN composer dump-autoload
 RUN php artisan optimize
+RUN echo APP_KEY= >> .env
+RUN php artisan key:generate
+
 
 EXPOSE 8080
 
