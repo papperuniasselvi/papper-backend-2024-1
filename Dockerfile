@@ -11,8 +11,6 @@ RUN echo "opcache.jit_buffer_size=128M" >> /usr/local/etc/php/conf.d/docker-php-
 ADD . /app
 WORKDIR /app
 
-#RUN mkdir -p /app/bootstrap/cache  /app/storage/framework/sessions /app/storage/framework/views /app/storage/framework/cache
-
 RUN apt-get update -yqq > /dev/null && \
     apt-get install -yqq git unzip > /dev/null && \
     apt-get clean && \
@@ -30,4 +28,4 @@ RUN touch .env
 
 EXPOSE 8080
 
-CMD sleep 10 && php artisan key:generate && php artisan octane:start --server=swoole --host=0.0.0.0 --port=8080
+CMD sleep 10 && printenv && php artisan key:generate && php artisan octane:start --server=swoole --host=0.0.0.0 --port=8080
