@@ -2,3 +2,7 @@
 .gitignore
 .env
 vendor/
+/app/bootstrap/cache/
+/app/storage/framework/sessions/
+/app/storage/framework/views/
+/app/storage/framework/cache/
