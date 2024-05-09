@@ -24,6 +24,7 @@ RUN apt-get update -yqq > /dev/null && \
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php && php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 
+USER www-data
 RUN composer install -a --no-dev --no-scripts --quiet
 RUN composer dump-autoload
 RUN php artisan optimize
