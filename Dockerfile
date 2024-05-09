@@ -24,10 +24,10 @@ RUN apt-get update -yqq > /dev/null && \
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php && php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 
-RUN composer install -a --no-dev --quiet
+RUN composer install -a --no-dev --no-scripts --quiet
 RUN composer dump-autoload
 RUN php artisan optimize
 
 EXPOSE 8080
 
-CMD php artisan key:generate && php artisan octane:start --server=swoole --host=0.0.0.0 --port=8080
+CMD sleep 10 && php artisan key:generate && php artisan octane:start --server=swoole --host=0.0.0.0 --port=8080
