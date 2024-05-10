@@ -27,6 +27,6 @@ RUN echo APP_KEY= >> .env
 RUN php artisan key:generate
 
 
-EXPOSE 8080
+EXPOSE 80
 
-CMD sleep 10 && composer dump-autoload && php artisan octane:start --server=swoole --host=0.0.0.0 --port=8080
+CMD sleep 10 && composer dump-autoload && php artisan octane:start --server=swoole --host=0.0.0.0 --port=80
