@@ -22,6 +22,7 @@ class CreateTaskTest extends TestCase
             "in backlog"
         );
 
+        /** @var TaskRepositoryInterface $taskRepositoryMock */
         $taskRepositoryMock = $this->mock(TaskRepositoryInterface::class, function (MockInterface $mock) use ($createInputDto) {
             $mock
                 ->shouldReceive('create')
