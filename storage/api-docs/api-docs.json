@@ -5,11 +5,10 @@
         "version": "1"
     },
     "paths": {
-        "/api/tasks": {},
-        "/": {
+        "/api/tasks": {
             "post": {
                 "summary": "Adicionad uma nova tarefa",
-                "operationId": "1318deb86deb1eed7fa4ea5da21f9c2d",
+                "operationId": "6bec0c877776e4762004ffe798e1a13b",
                 "requestBody": {
                     "content": {
                         "application/json": {

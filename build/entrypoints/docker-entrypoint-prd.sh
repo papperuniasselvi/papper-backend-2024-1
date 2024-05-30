@@ -1,3 +1,4 @@
 #!/bin/sh
+sleep 10
 php artisan key:generate
-php artisan octane:start --server=swoole --host=0.0.0.0 --port=8080
+php artisan octane:start --host=0.0.0.0

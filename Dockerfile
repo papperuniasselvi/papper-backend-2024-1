@@ -12,7 +12,7 @@ ADD . /app
 WORKDIR /app
 
 RUN apt-get update -yqq > /dev/null && \
-    apt-get install -yqq git unzip > /dev/null && \
+    apt-get install -yqq git unzip npm > /dev/null && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -29,6 +29,6 @@ RUN php artisan key:generate
 COPY ./build/entrypoints/docker-entrypoint-prd.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
 
-EXPOSE 8080
+EXPOSE 8000
 
 ENTRYPOINT "/entrypoint.sh"

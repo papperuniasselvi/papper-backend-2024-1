@@ -1,22 +1,23 @@
 services:
     app:
         build: .
+        container_name: apphost.dev
         env_file:
             - .env
         extra_hosts:
             - 'host.build.internal:host-gateway'
         ports:
-            - '8001:80'
+            - '8001:8000'
         volumes:
             - '.:/app'
-            - './build/entrypoints/docker-entrypoint-prd.sh:/entrypoint.sh'
         networks:
             - bubble
         depends_on:
             - mysql
-        entrypoint: ["/bin/sh", "-c", "chmod +x /entrypoint.sh && /entrypoint.sh"]
+        entrypoint: ["/bin/sh", "-c", "npm install && php artisan key:generate && php artisan octane:start --server=swoole --host=0.0.0.0 --watch"]
     mysql:
         image: 'mysql/mysql-server:8.0'
+        container_name: 'mysqlhost.dev'
         ports:
             - '${FORWARD_DB_PORT:-3306}:3306'
         environment:
