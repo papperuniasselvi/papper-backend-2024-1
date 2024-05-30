@@ -19,6 +19,36 @@ class CreateTaskOutputDto
     ) {
     }
 
+    /**
+     * @OA\Schema(
+     *  schema="CreateTaskOutputDto",
+     *  title="Retorno da api em caso de sucesso",
+     * 	@OA\Property(
+     * 		property="id",
+     * 		type="int"
+     * 	),
+     * 	@OA\Property(
+     * 		property="description",
+     * 		type="string"
+     * 	),
+     * 	@OA\Property(
+     * 		property="expected_date",
+     * 		type="string"
+     * 	),
+     * 	@OA\Property(
+     * 		property="responsible",
+     * 		type="string"
+     * 	),
+     * 	@OA\Property(
+     * 		property="board",
+     * 		type="string"
+     * 	),
+     * 	@OA\Property(
+     * 		property="created_at",
+     * 		type="string"
+     * 	)
+     * )
+     */
     public function toArray(): array
     {
         return [
