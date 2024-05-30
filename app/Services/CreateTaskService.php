@@ -13,6 +13,9 @@ readonly class CreateTaskService
     {
     }
 
+    /**
+     * @throws \Exception
+     */
     public function handle(array $requestData): CreateTaskOutputDto
     {
         $requestDataDto = CreateTaskInputDto::makeFromArray($requestData);
