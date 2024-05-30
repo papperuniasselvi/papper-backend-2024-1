@@ -28,6 +28,9 @@ RUN composer install -a --no-dev --quiet
 RUN composer dump-autoload
 RUN php artisan optimize
 
+COPY ./build/entrypoints/docker-entrypoint-prd.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
 EXPOSE 8080
 
-CMD php artisan key:generate && php artisan octane:start --server=swoole --host=0.0.0.0 --port=8080
+ENTRYPOINT "/entrypoint.sh"

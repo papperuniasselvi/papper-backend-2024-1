@@ -1,0 +1,89 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Controler de Tarefas",
+        "version": "1"
+    },
+    "paths": {
+        "/api/tasks": {},
+        "/": {
+            "post": {
+                "summary": "Adicionad uma nova tarefa",
+                "operationId": "1318deb86deb1eed7fa4ea5da21f9c2d",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "properties": {
+                                    "description": {
+                                        "type": "string"
+                                    },
+                                    "responsible": {
+                                        "type": "string"
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "description": "Criar uma nova tarefa",
+                                    "responsible": "responsavel@projetopaper.dev"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "content": {
+                            "application/json": {
+                                "schema": {},
+                                "examples": {
+                                    "CreateTaskOutputDto": {
+                                        "summary": "Resultado esperado.",
+                                        "value": {
+                                            "id": 1,
+                                            "description": "Criar nova tarefa",
+                                            "expected_date": "2024-05-30 18:00:00",
+                                            "responsible": "rogerio.lamarques@gmail.com",
+                                            "status": "in backlog",
+                                            "board": "default",
+                                            "created_at": "2024-05-30 09:00:00"
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "CreateTaskOutputDto": {
+                "title": "Retorno da api em caso de sucesso",
+                "properties": {
+                    "id": {
+                        "type": "integer"
+                    },
+                    "description": {
+                        "type": "string"
+                    },
+                    "expected_date": {
+                        "type": "string"
+                    },
+                    "responsible": {
+                        "type": "string"
+                    },
+                    "board": {
+                        "type": "string"
+                    },
+                    "created_at": {
+                        "type": "string"
+                    }
+                },
+                "type": "object"
+            }
+        }
+    }
+}

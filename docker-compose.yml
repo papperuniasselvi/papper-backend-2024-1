@@ -9,10 +9,12 @@ services:
             - '8001:8080'
         volumes:
             - '.:/app'
+            - './build/entrypoints/docker-entrypoint-prd.sh:/entrypoint.sh'
         networks:
             - bubble
         depends_on:
             - mysql
+        entrypoint: ["/bin/sh", "-c", "chmod +x /entrypoint.sh && /entrypoint.sh"]
     mysql:
         image: 'mysql/mysql-server:8.0'
         ports:
