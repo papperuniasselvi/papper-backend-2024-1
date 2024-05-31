@@ -12,7 +12,7 @@ ADD . /app
 WORKDIR /app
 
 RUN apt-get update -yqq > /dev/null && \
-    apt-get install -yqq git unzip > /dev/null && \
+    apt-get install -yqq git unzip npm > /dev/null && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
@@ -26,7 +26,9 @@ RUN php artisan optimize
 RUN echo APP_KEY= >> .env
 RUN php artisan key:generate
 
+COPY ./build/entrypoints/docker-entrypoint-prd.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
 
-EXPOSE 80
+EXPOSE 8000
 
-CMD sleep 10 && composer dump-autoload && php artisan octane:start --server=swoole --host=0.0.0.0 --port=80
+ENTRYPOINT "/entrypoint.sh"
