@@ -7,13 +7,14 @@ use App\Dtos\UpdateTaskOutputDto;
 use App\Repositories\TaskRepositoryInterface;
 use App\UseCases\UpdateTask;
 use DateTime;
+use Exception;
 use Mockery\MockInterface;
 use Tests\TestCase;
 
 class UpdateTaskTest extends TestCase
 {
     /**
-     * @throws \Exception
+     * @throws Exception
      */
     public function testShouldUpdateTask()
     {
