@@ -37,9 +37,9 @@ class UpdateTaskTest extends TestCase
             ->once()
             ->andReturn($updateDto->toEntity());
 
-        $usecase = new UpdateTask($taskRepositoryMock);
+        $useCase = new UpdateTask($taskRepositoryMock);
 
-        $result = $usecase->execute($updateDto);
+        $result = $useCase->execute($updateDto);
 
         $this->assertInstanceOf(UpdateTaskOutputDto::class, $result);
 
