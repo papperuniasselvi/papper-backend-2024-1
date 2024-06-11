@@ -7,13 +7,14 @@ use App\Dtos\UpdateTaskOutputDto;
 use App\Repositories\TaskRepositoryInterface;
 use App\UseCases\UpdateTask;
 use DateTime;
+use Mockery\MockInterface;
 use Tests\TestCase;
 
 class UpdateTaskTest extends TestCase
 {
     public function testShouldUpdateTask()
     {
-        /** @var TaskRepositoryInterface $taskRepositoryMock */
+        /** @var TaskRepositoryInterface | MockInterface $taskRepositoryMock */
         $taskRepositoryMock = $this->mock(TaskRepositoryInterface::class);
 
         $updateDto = new UpdateTaskInputDto(
