@@ -13,6 +13,7 @@ class UpdateTaskTest extends TestCase
 {
     public function testShouldUpdateTask()
     {
+        /** @var TaskRepositoryInterface $taskRepositoryMock */
         $taskRepositoryMock = $this->mock(TaskRepositoryInterface::class);
 
         $updateDto = new UpdateTaskInputDto(
