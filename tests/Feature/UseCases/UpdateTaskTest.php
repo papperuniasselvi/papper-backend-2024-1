@@ -12,6 +12,9 @@ use Tests\TestCase;
 
 class UpdateTaskTest extends TestCase
 {
+    /**
+     * @throws \Exception
+     */
     public function testShouldUpdateTask()
     {
         /** @var TaskRepositoryInterface | MockInterface $taskRepositoryMock */
